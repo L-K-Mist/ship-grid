@@ -20,7 +20,9 @@
           </v-btn>
           <v-toolbar-title>Ship Grid</v-toolbar-title>
         </v-toolbar>
-        <ship-grid></ship-grid>
+        <div class="ship-grid-wrapper">
+          <ship-grid></ship-grid>
+        </div>
       </v-card>
     </v-dialog>
   </v-app>
@@ -48,5 +50,8 @@ export default {
   position: absolute;
   right: 30px;
   bottom: 30px;
+}
+.ship-grid-wrapper {
+  height: 70vh;
 }
 </style>
