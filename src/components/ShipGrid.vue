@@ -31,6 +31,26 @@
             stroke="blue"
             :stroke-width="maxX / 1000"
           ></line>
+          <text
+            font-size="0.3"
+            v-for="y in maxY"
+            :key="`yAxis-${y}`"
+            x="-1"
+            :y="y"
+            class="small"
+          >
+            {{ maxY - y }}
+          </text>
+          <text
+            font-size="0.3"
+            v-for="x in maxX"
+            :key="`xAxis-${x}`"
+            :x="x"
+            :y="maxY + 1"
+            class="small"
+          >
+            {{ x }}
+          </text>
         </g>
       </svg>
     </v-row>
