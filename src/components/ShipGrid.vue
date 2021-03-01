@@ -9,7 +9,7 @@
             :height="maxY"
             fill="none"
             stroke="black"
-            stroke-width="0.3"
+            :stroke-width="maxX / 500"
           ></rect>
           <line
             v-for="x in maxX"
@@ -19,7 +19,7 @@
             :x2="x"
             :y2="maxY"
             stroke="black"
-            stroke-width="0.1"
+            :stroke-width="maxX / 1000"
           ></line>
           <line
             v-for="y in maxY"
@@ -29,7 +29,7 @@
             :x2="maxX"
             :y2="y"
             stroke="blue"
-            stroke-width="0.1"
+            :stroke-width="maxX / 1000"
           ></line>
         </g>
       </svg>
