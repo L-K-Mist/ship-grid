@@ -2,7 +2,7 @@
   <div>
     <v-row class="svg-wrapper">
       <svg viewBox="0 0 50 50" id="ship-grid" width="50" height="50">
-        <g id="group-grid" style="display: inline">
+        <g id="group-grid">
           <rect
             id="grid"
             :width="maxX"
@@ -66,12 +66,19 @@ export default {
 
   methods: {
     viewBoxString(frame) {
-      return `${frame.x - 1} ${frame.y + 1} ${frame.width + 2} ${frame.height -
-        2}`;
+      if (this.maxY > this.maxX) {
+        return `${frame.x - this.maxY / 2} ${frame.y +
+          this.maxX / 2} ${frame.width + this.maxY} ${frame.height -
+          this.maxX}`;
+      } else {
+        return `${frame.x - 1} ${frame.y + 1} ${frame.width +
+          2} ${frame.height - 2}`;
+      }
     },
     zoomToView(elementId) {
       const element = document.getElementById(elementId);
       const box = element.getBBox();
+      console.log("zoomToView - box", box);
       return gsap.to("#ship-grid", {
         duration: 1,
         attr: { viewBox: this.viewBoxString(box) },
