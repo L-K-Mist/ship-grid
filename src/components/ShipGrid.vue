@@ -12,22 +12,22 @@
             stroke-width="0.3"
           ></rect>
           <line
-            v-for="item in maxX"
-            :key="item"
-            :x1="item"
+            v-for="x in maxX"
+            :key="`vertical-${x}`"
+            :x1="x"
             y1="0"
-            :x2="item"
+            :x2="x"
             :y2="maxY"
             stroke="black"
             stroke-width="0.1"
           ></line>
           <line
-            v-for="item in maxY"
-            :key="item"
+            v-for="y in maxY"
+            :key="`horizontal-${y}`"
             x1="0"
-            :y1="item"
+            :y1="y"
             :x2="maxX"
-            :y2="item"
+            :y2="y"
             stroke="blue"
             stroke-width="0.1"
           ></line>
@@ -94,7 +94,7 @@ svg {
 .svg-wrapper {
   margin: 40px auto;
   height: 60vh;
-  width: 60vw;
+  width: 40vw;
 }
 .control-panel {
   position: absolute;
