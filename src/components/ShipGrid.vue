@@ -1,7 +1,13 @@
 <template>
   <div>
     <v-row class="svg-wrapper">
-      <svg viewBox="0 0 50 50" id="ship-grid" width="50" height="50">
+      <svg
+        @click="onClickedInsideSvg"
+        id="ship-grid"
+        viewBox="0 0 50 50"
+        width="50"
+        height="50"
+      >
         <g id="group-grid">
           <rect
             id="grid"
@@ -85,7 +91,7 @@ import { gsap } from "gsap";
 export default {
   setup() {
     const { x: mouseX, y: mouseY } = useMousePositionScreen();
-    const { svgX, svgY } = useMousePositionSVG("svg-timeline");
+    const { svgX, svgY } = useMousePositionSVG("ship-grid");
     const { windowWidth, windowHeight } = useWindowSize();
     return {
       mouseX,
@@ -102,17 +108,18 @@ export default {
       maxY: 12,
     };
   },
-
   methods: {
     viewBoxString(frame) {
       if (this.maxY > this.maxX) {
-        return `${frame.x - this.maxY / 2} ${frame.y +
-          this.maxX / 2} ${frame.width + this.maxY} ${frame.height -
-          this.maxX}`;
+        return `${frame.x + 1.5} ${frame.y - 1.5} ${frame.width -
+          4} ${frame.height + 4}`;
       } else {
         return `${frame.x - 1} ${frame.y + 1} ${frame.width +
           2} ${frame.height - 2}`;
       }
+    },
+    onClickedInsideSvg() {
+      console.log(`x is: ${this.svgX}\ny is: ${this.maxY - this.svgY}`);
     },
     zoomToView(elementId) {
       const element = document.getElementById(elementId);
