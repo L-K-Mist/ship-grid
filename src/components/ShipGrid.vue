@@ -75,8 +75,27 @@
 </template>
 
 <script>
+import { ref, reactive, watchEffect } from "@vue/composition-api";
+import {
+  useMousePositionScreen,
+  useMousePositionSVG,
+  useWindowSize,
+} from "@/composables/WebApi";
 import { gsap } from "gsap";
 export default {
+  setup() {
+    const { x: mouseX, y: mouseY } = useMousePositionScreen();
+    const { svgX, svgY } = useMousePositionSVG("svg-timeline");
+    const { windowWidth, windowHeight } = useWindowSize();
+    return {
+      mouseX,
+      mouseY,
+      svgX,
+      svgY,
+      windowWidth,
+      windowHeight,
+    };
+  },
   data() {
     return {
       maxX: 10,
